@@ -1,0 +1,572 @@
+/* ==========================================================================
+   New Frontiers Ministers' Global Network
+   One stylesheet for every page. Header and footer are global — edit here
+   once and all pages follow.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS  (sampled from the approved design)
+   -------------------------------------------------------------------------- */
+:root{
+  --teal:#2795ae;        /* brand fill: About, Exploits Lab, buttons, links */
+  --teal-dark:#1f7f96;   /* hover */
+  --mint:#4fccbe;        /* onboarding cards 01 / 03 */
+  --cyan:#04c7e5;        /* hairline accents */
+  --navy:#1e293b;        /* header bar */
+  --ink:#16232e;         /* headings */
+  --body:#5b6672;        /* copy */
+  --grey:#f3f3f3;        /* convener card */
+  --grey-2:#f1f1f1;      /* event cards */
+  --line:#e4e7ea;
+  --err:#c8443d;
+
+  --wrap:1440px;         /* = 1360px content + 2x40px gutter */
+  --pad:40px;
+  --sec:80px;
+  --head:88px;
+
+  --display:'Poppins',system-ui,-apple-system,sans-serif;
+  --text:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--head)}
+body{
+  margin:0;background:#fff;color:var(--body);
+  font-family:var(--text);font-size:15px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:600;line-height:1.22;margin:0}
+p{margin:0}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.sec{padding:var(--sec) 0}
+.sec-title{font-size:28px;text-align:center;color:var(--teal);margin-bottom:48px}
+
+/* pages without a hero start below the fixed header */
+.page-top{padding-top:var(--head)}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+}
+
+/* --------------------------------------------------------------------------
+   3. GLOBAL HEADER
+   Solid on every page. Transparent only over the home hero, until scrolled.
+   -------------------------------------------------------------------------- */
+.site-head{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;height:var(--head);
+  background:var(--navy);transition:background .3s ease,box-shadow .3s ease;
+}
+body.home .site-head{background:transparent}
+body.home .site-head.stuck{background:var(--navy);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.head-in{position:relative;display:flex;align-items:center;width:100%;max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);gap:24px}
+.brand img{height:38px;width:auto}
+/* centred on desktop, independent of the logo and button widths */
+.nav{display:flex;gap:36px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav a{font-size:14px;color:rgba(255,255,255,.9);padding:6px 0;position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--cyan);transition:right .3s ease}
+.nav a:hover::after{right:0}
+.site-head .btn-book{margin-left:auto}
+.btn-book{
+  background:var(--teal);color:#fff;font-family:var(--display);font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;border-radius:3px;
+  white-space:nowrap;transition:background .2s ease,transform .2s ease;
+}
+.btn-book:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.icon-btn{display:none;color:#fff;padding:6px;line-height:0}
+.icon-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+.drawer{
+  position:fixed;inset:0;z-index:70;background:var(--navy);padding:96px 32px 32px;
+  display:flex;flex-direction:column;transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.drawer.open{transform:none}
+.drawer a{font-family:var(--display);font-size:20px;color:#fff;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.drawer .btn-book{align-self:flex-start;margin-top:28px;border-bottom:0}
+.drawer-close{position:absolute;top:26px;right:30px;color:#fff;font-size:34px;line-height:1}
+
+.search-bar{
+  position:fixed;top:0;left:0;right:0;z-index:80;background:#fff;
+  display:flex;align-items:center;gap:12px;padding:16px 20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);transform:translateY(-120%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+.search-bar.open{transform:none}
+.search-bar input{flex:1;min-width:0;border:0;border-bottom:1px solid var(--line);padding:8px 2px;font:inherit;color:var(--ink)}
+.search-bar input:focus{outline:0;border-color:var(--cyan)}
+.search-bar button{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.search-bar .x{font-size:24px;letter-spacing:0;color:var(--body)}
+
+/* --------------------------------------------------------------------------
+   4. SHARED BUTTONS
+   -------------------------------------------------------------------------- */
+.btn-ghost{
+  border:1px solid rgba(255,255,255,.6);color:#fff;font-family:var(--display);
+  font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  padding:16px 34px;transition:background .25s ease,border-color .25s ease;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.btn-pill{
+  display:inline-block;background:var(--teal);color:#fff;font-family:var(--display);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:15px 34px;border-radius:999px;transition:background .2s ease,transform .2s ease;
+}
+.btn-pill:hover{background:var(--teal-dark);transform:translateY(-2px)}
+
+/* --------------------------------------------------------------------------
+   5. HOME — HERO
+   -------------------------------------------------------------------------- */
+.hero{
+  position:relative;min-height:min(92vh,920px);display:flex;align-items:center;
+  text-align:center;color:#fff;background:#0a1a2b;
+  padding:calc(var(--head) + 40px) 0 80px;
+}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,17,32,.86) 0%,rgba(3,22,40,.72) 45%,rgba(2,15,28,.9) 100%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{color:#fff;font-size:clamp(30px,4.2vw,52px);max-width:16ch;margin:0 auto 20px;letter-spacing:-.015em}
+.hero p{max-width:56ch;margin:0 auto;font-size:15px;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+
+/* --------------------------------------------------------------------------
+   6. HOME — PILLARS
+   -------------------------------------------------------------------------- */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.pillar{border-left:8px solid var(--cyan);padding-left:24px}
+.pillar h3{font-size:18px;margin-bottom:10px}
+.pillar p{font-size:13.5px;line-height:1.7;max-width:38ch}
+
+/* --------------------------------------------------------------------------
+   7. HOME — CONVENER
+   -------------------------------------------------------------------------- */
+.convener{padding-bottom:var(--sec)}
+.convener-card{display:grid;grid-template-columns:1fr 36%;gap:28px;align-items:stretch}
+.convener-copy{
+  background:var(--grey);border-radius:16px;padding:56px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.convener-copy h2{font-size:30px;margin-bottom:26px}
+.convener-copy p{font-size:15px;margin-bottom:20px;max-width:62ch}
+.convener-copy b{color:var(--ink);font-weight:600}
+.sig{font-family:var(--display);font-weight:600;color:var(--ink);font-size:15px;margin-bottom:0}
+.convener-photo{background:#a1ecf4;border-radius:16px;overflow:hidden;min-height:420px}
+.convener-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* --------------------------------------------------------------------------
+   8. HOME — ABOUT (full-bleed split)
+   -------------------------------------------------------------------------- */
+.about{display:grid;grid-template-columns:34fr 66fr;background:var(--teal)}
+.about-img{position:relative;min-height:320px;background:#1c1c1c}
+.about-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.about-copy{padding:64px 72px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+.about-copy h2{color:#fff;font-size:34px;margin-bottom:20px}
+.about-copy p{font-size:14px;color:rgba(255,255,255,.95);margin-bottom:16px;max-width:78ch}
+.about-copy p:last-child{margin-bottom:0}
+.about-copy b{color:#fff;font-weight:600}
+
+/* --------------------------------------------------------------------------
+   9. HOME — SPLIT SECTIONS (audience + onboarding)
+   -------------------------------------------------------------------------- */
+.split{display:grid;grid-template-columns:30fr 70fr;gap:64px;align-items:start}
+.eyebrow{
+  display:block;font-family:var(--display);font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;
+}
+.split h2{font-size:30px;letter-spacing:-.01em}
+
+.aud{display:flex;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.aud:first-child{padding-top:0}
+.aud:last-child{border-bottom:0;padding-bottom:0}
+.aud-ic{flex:0 0 38px}
+.aud-ic svg{width:38px;height:38px}
+.aud h3{font-size:16px;margin-bottom:8px}
+.aud p{font-size:13.5px;line-height:1.75}
+
+.steps{display:flex;flex-direction:column;gap:16px;list-style:none;margin:0;padding:0}
+.step{display:flex;align-items:center;gap:22px;padding:24px 28px;color:#fff;border-radius:4px;transition:transform .25s ease,box-shadow .25s ease}
+.step:hover{transform:translateX(5px);box-shadow:0 12px 26px rgba(39,149,174,.22)}
+.step--mint{background:var(--mint)}
+.step--teal{background:var(--teal)}
+.step svg{flex:0 0 34px;width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.6}
+.step-txt h3{color:#fff;font-size:17px;font-weight:600;margin-bottom:4px}
+.step-txt p{font-size:13px;color:rgba(255,255,255,.92);line-height:1.5;max-width:34ch}
+.step-txt a{color:#fff;text-decoration:underline}
+.step-no{margin-left:auto;font-family:var(--display);font-size:34px;font-weight:600;color:#fff;letter-spacing:-.02em}
+
+/* --------------------------------------------------------------------------
+   10. HOME — IMPACT BAND
+   -------------------------------------------------------------------------- */
+.impact{position:relative;text-align:center;color:#fff;padding:96px 0;background:#0d0d0d;overflow:hidden}
+.impact-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32}
+.impact .wrap{position:relative;z-index:2}
+.impact h2{color:#fff;font-size:clamp(22px,3vw,32px);margin-bottom:14px}
+.impact p{font-size:14px;color:rgba(255,255,255,.78);max-width:46ch;margin:0 auto}
+.impact .btn-pill{margin-top:30px}
+
+/* --------------------------------------------------------------------------
+   11. HOME — RESOURCES
+   -------------------------------------------------------------------------- */
+.resources{background:var(--teal);padding:var(--sec) 0}
+.resources h2{color:#fff;text-align:center;font-size:28px;margin-bottom:48px}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.res{background:rgba(255,255,255,.11);border-radius:4px;padding:44px 30px;text-align:center;color:#fff;transition:background .25s ease,transform .25s ease}
+.res:hover{background:rgba(255,255,255,.2);transform:translateY(-5px)}
+.res-ic{height:56px;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.res-ic svg{max-height:56px;width:auto}
+.res h3{color:#fff;font-size:18px;margin-bottom:12px}
+.res p{font-size:13px;color:rgba(255,255,255,.88);line-height:1.65;max-width:34ch;margin:0 auto}
+
+/* --------------------------------------------------------------------------
+   12. HOME — EVENTS
+   -------------------------------------------------------------------------- */
+.ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.ev{background:var(--grey-2);padding:16px 16px 24px;transition:transform .25s ease,box-shadow .25s ease}
+.ev:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(22,35,46,.12)}
+.ev-thumb{aspect-ratio:16/10;overflow:hidden}
+.ev-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ev:hover .ev-thumb img{transform:scale(1.04)}
+.ev-body{border-left:8px solid var(--cyan);padding-left:20px;margin-top:22px}
+.ev-body h3{font-size:17px;margin-bottom:6px}
+.ev-body p{font-size:13px}
+
+/* --------------------------------------------------------------------------
+   13. GLOBAL FOOTER
+   -------------------------------------------------------------------------- */
+.site-foot{background:#000;color:#fff;text-align:center;padding:52px 0 24px}
+.foot-label{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.foot-mail{font-family:var(--display);font-size:clamp(17px,2.4vw,24px);font-weight:500;color:var(--teal);word-break:break-word}
+.foot-mail:hover{text-decoration:underline}
+.foot-tel{display:inline-block;margin-top:8px;font-size:16px}
+.socials{display:flex;gap:12px;justify-content:center;margin:26px 0 30px}
+.socials a{width:30px;height:30px;border-radius:5px;background:var(--teal);display:grid;place-items:center;transition:background .2s ease,transform .2s ease}
+.socials a:hover{background:var(--teal-dark);transform:translateY(-2px)}
+.socials svg{width:15px;height:15px;fill:#fff}
+.copy{font-size:10px;color:rgba(255,255,255,.45);border-top:1px solid rgba(255,255,255,.1);padding-top:20px}
+
+/* --------------------------------------------------------------------------
+   14. ONBOARDING FORM  (structure from the supplied build, site palette)
+   All rules stay scoped under .nfm-wrap so the form can also be lifted out
+   and embedded elsewhere without dragging the rest of the site along.
+   -------------------------------------------------------------------------- */
+.nfm-wrap{
+  --nfm-1:var(--teal);
+  --nfm-2:var(--mint);
+  --nfm-ink:var(--ink);
+  --nfm-text:#363c49;
+  --nfm-muted:#6b7280;
+  --nfm-faint:#9aa1ad;
+  --nfm-border:#e4e6ec;
+  --nfm-border-strong:#d3d6df;
+  --nfm-btn:var(--navy);
+  --nfm-btn-hover:#0f1620;
+  --nfm-error:#dc2626;
+  --nfm-error-bg:#fef2f2;
+  --nfm-radius:11px;
+
+  font-family:var(--text);
+  color:var(--nfm-text);
+  display:flex;justify-content:center;
+  padding:34px 16px 70px;
+}
+.nfm-wrap *,.nfm-wrap *::before,.nfm-wrap *::after{box-sizing:border-box}
+
+.nfm-card{
+  width:100%;max-width:1160px;background:#fff;
+  border:1px solid var(--nfm-border);border-radius:18px;
+  box-shadow:0 1px 2px rgba(20,24,33,.04),0 18px 50px -28px rgba(20,24,33,.28);
+  overflow:hidden;position:relative;
+}
+.nfm-topbar{height:7px;background:linear-gradient(90deg,var(--nfm-1),var(--nfm-2))}
+.nfm-inner{padding:30px 38px 38px}
+
+/* progress */
+.nfm-progress-meta{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:500;color:var(--nfm-faint);letter-spacing:.02em;margin-bottom:9px}
+.nfm-progress-track{height:5px;border-radius:99px;background:#eef0f4;overflow:hidden;margin-bottom:26px}
+.nfm-progress-fill{height:100%;border-radius:99px;width:16.6%;background:linear-gradient(90deg,var(--nfm-1),var(--nfm-2));transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+/* back link */
+.nfm-back{
+  display:inline-flex;align-items:center;gap:7px;background:none;border:0;cursor:pointer;
+  padding:0;margin:0 0 22px;color:var(--nfm-faint);font-family:inherit;font-size:14px;
+  font-weight:600;transition:color .15s ease,gap .2s ease;
+}
+.nfm-back:hover{color:var(--nfm-text);gap:11px}
+.nfm-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* headings */
+.nfm-wrap .nfm-h1{font-family:var(--display);font-size:28px;line-height:1.12;font-weight:700;color:var(--nfm-ink);margin:0 0 4px;letter-spacing:-.015em}
+.nfm-h2{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.2;color:var(--nfm-ink);margin:0 0 24px;letter-spacing:-.01em}
+.nfm-sub{font-family:var(--display);font-size:20px;font-weight:600;color:var(--nfm-ink);margin:2px 0 22px}
+.nfm-intro{font-size:14.5px;line-height:1.62;color:var(--nfm-text);margin:0 0 28px}
+.nfm-intro b{color:var(--nfm-ink);font-weight:600}
+.nfm-lead{font-family:var(--display);font-size:15.5px;font-weight:600;color:var(--nfm-ink);margin:0 0 16px}
+
+/* steps */
+.nfm-step{display:none;animation:nfmIn .42s cubic-bezier(.16,1,.3,1)}
+.nfm-step.is-active{display:block}
+@keyframes nfmIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* fields */
+.nfm-field{margin-bottom:22px}
+.nfm-field:last-of-type{margin-bottom:0}
+.nfm-label{display:block;font-family:var(--display);font-size:15px;font-weight:600;color:var(--nfm-ink);line-height:1.4;margin-bottom:9px}
+.nfm-label .hint{display:block;font-family:var(--text);font-weight:400;font-style:italic;font-size:13.5px;color:var(--nfm-muted);margin-top:2px}
+
+.nfm-input,.nfm-select,.nfm-textarea{
+  width:100%;font-family:inherit;font-size:15px;color:var(--nfm-text);background:#fff;
+  border:1px solid var(--nfm-border-strong);border-radius:var(--nfm-radius);
+  padding:13px 15px;line-height:1.45;
+  transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
+  -webkit-appearance:none;appearance:none;
+}
+.nfm-input:hover,.nfm-select:hover,.nfm-textarea:hover{border-color:var(--nfm-faint)}
+.nfm-input::placeholder,.nfm-textarea::placeholder{color:var(--nfm-faint)}
+.nfm-input:focus,.nfm-select:focus,.nfm-textarea:focus{outline:0;border-color:var(--nfm-1);box-shadow:0 0 0 3.5px rgba(39,149,174,.18)}
+.nfm-textarea{resize:vertical;min-height:118px}
+.nfm-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;padding-right:42px;cursor:pointer;
+}
+.nfm-input.is-bad,.nfm-select.is-bad,.nfm-textarea.is-bad{border-color:var(--nfm-error);background:var(--nfm-error-bg)}
+.nfm-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* date input keeps a custom placeholder until it holds a value */
+.nfm-date{-webkit-appearance:none;appearance:none;position:relative;min-height:48px}
+.nfm-date::-webkit-date-and-time-value{text-align:left}
+.nfm-date::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.55}
+.nfm-date:not(.has-value){color:transparent}
+.nfm-date:not(.has-value)::-webkit-datetime-edit{color:transparent}
+.nfm-date:not(.has-value)::before{content:attr(data-placeholder);position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--nfm-faint);pointer-events:none}
+.nfm-date.has-value{color:var(--nfm-text)}
+
+.nfm-counter{font-size:12.5px;color:var(--nfm-faint);text-align:right;margin-top:6px}
+.nfm-counter.over{color:var(--nfm-error);font-weight:600}
+
+/* choices */
+.nfm-choices{display:flex;flex-direction:column;gap:10px}
+.nfm-choice{
+  display:flex;align-items:center;gap:12px;cursor:pointer;width:100%;
+  border:1px solid var(--nfm-border-strong);border-radius:var(--nfm-radius);
+  padding:11px 14px;font-size:15px;color:var(--nfm-text);font-weight:500;user-select:none;
+  transition:border-color .15s ease,background .15s ease,box-shadow .15s ease,transform .15s ease;
+}
+.nfm-choice:hover{border-color:var(--nfm-faint);transform:translateX(3px)}
+.nfm-choice input{position:absolute;opacity:0;width:0;height:0}
+.nfm-badge{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#eef0f4;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:12.5px;font-weight:700;color:var(--nfm-muted);transition:all .15s ease}
+.nfm-choice.is-checked{border-color:var(--nfm-1);background:#f2fafc;box-shadow:0 0 0 1px var(--nfm-1) inset}
+.nfm-choice.is-checked .nfm-badge{background:var(--nfm-1);color:#fff}
+.nfm-choices.is-bad .nfm-choice{border-color:var(--nfm-error)}
+
+.nfm-specify{margin-top:11px;display:none}
+.nfm-specify.show{display:block;animation:nfmIn .3s ease}
+
+/* declaration */
+.nfm-declare{display:flex;gap:13px;align-items:flex-start;border:1px solid var(--nfm-border-strong);border-radius:var(--nfm-radius);padding:16px 17px;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+.nfm-declare:hover{border-color:var(--nfm-faint)}
+.nfm-declare.is-checked{border-color:var(--nfm-1);background:#f2fafc}
+.nfm-declare.is-bad{border-color:var(--nfm-error);background:var(--nfm-error-bg)}
+.nfm-check{flex:0 0 auto;width:24px;height:24px;border-radius:7px;border:2px solid var(--nfm-border-strong);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s ease}
+.nfm-check svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:3;opacity:0;transition:opacity .15s ease}
+.nfm-declare.is-checked .nfm-check{background:var(--nfm-1);border-color:var(--nfm-1)}
+.nfm-declare.is-checked .nfm-check svg{opacity:1}
+.nfm-declare input{position:absolute;opacity:0;width:0;height:0}
+.nfm-declare-text{font-size:14.5px;line-height:1.58;color:var(--nfm-text)}
+.nfm-declare-text b{color:var(--nfm-ink);font-weight:600}
+
+/* errors */
+.nfm-err{display:none;color:var(--nfm-error);font-size:13px;font-weight:500;margin-top:7px}
+.nfm-err.show{display:block}
+
+/* buttons */
+.nfm-nav{margin-top:30px;display:flex}
+.nfm-btn{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;background:var(--nfm-btn);color:#fff;
+  border:0;border-radius:10px;font-family:var(--display);font-size:15px;font-weight:600;padding:12px 22px;
+  transition:background .15s ease,transform .12s ease,box-shadow .2s ease,opacity .15s ease;
+}
+.nfm-btn:hover{background:var(--nfm-btn-hover);transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(20,24,33,.8)}
+.nfm-btn:active{transform:translateY(1px)}
+.nfm-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.nfm-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;transition:transform .2s ease}
+.nfm-btn:hover svg{transform:translateX(3px)}
+.nfm-btn.submit{background:var(--nfm-1)}
+.nfm-btn.submit:hover{background:var(--teal-dark);box-shadow:0 10px 22px -12px rgba(39,149,174,.9)}
+
+.nfm-spin{width:16px;height:16px;border:2.2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:nfmSpin .7s linear infinite}
+@keyframes nfmSpin{to{transform:rotate(360deg)}}
+
+/* success */
+.nfm-done{display:none;text-align:center;padding:18px 6px 8px;animation:nfmIn .5s ease}
+.nfm-done.show{display:block}
+.nfm-done-mark{width:74px;height:74px;border-radius:50%;margin:0 auto 22px;background:linear-gradient(135deg,var(--nfm-1),var(--nfm-2));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -8px rgba(39,149,174,.5)}
+.nfm-done-mark svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:3}
+.nfm-done h2{font-family:var(--display);font-size:25px;font-weight:700;color:var(--nfm-ink);margin:0 0 10px}
+.nfm-done p{font-size:15px;line-height:1.6;color:var(--nfm-muted);margin:0 auto;max-width:430px}
+
+.nfm-foot{text-align:center;font-size:11.5px;color:var(--nfm-faint);margin-top:22px;letter-spacing:.02em}
+.nfm-hp{position:absolute;left:-9999px;top:-9999px;height:0;width:0;opacity:0;pointer-events:none}
+
+@media(max-width:560px){
+  .nfm-inner{padding:24px 22px 30px}
+  .nfm-wrap .nfm-h1{font-size:25px}
+  .nfm-h2{font-size:21px}
+  .nfm-row{grid-template-columns:1fr}
+}
+
+/* --------------------------------------------------------------------------
+   15. 404
+   -------------------------------------------------------------------------- */
+.notfound{text-align:center;padding:110px 0 120px}
+.notfound .num{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.notfound h1{font-size:clamp(26px,4vw,38px);margin-bottom:14px}
+.notfound p{max-width:46ch;margin:0 auto}
+.notfound .links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+.notfound .btn-line{
+  border:1px solid var(--line);color:var(--ink);font-family:var(--display);font-size:11px;
+  font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:15px 30px;border-radius:3px;
+  transition:border-color .2s ease,color .2s ease;
+}
+.notfound .btn-line:hover{border-color:var(--ink)}
+
+/* --------------------------------------------------------------------------
+   16. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width:1100px){
+  :root{--pad:28px;--sec:64px}
+  .split{gap:40px}
+  .convener-copy{padding:44px}
+  .convener-photo{min-height:340px}
+  .about-copy{padding:48px}
+  .about-copy h2{font-size:28px}
+}
+@media (max-width:900px){
+  :root{--head:72px;--sec:56px;--pad:22px}
+  .nav,.site-head .btn-book{display:none}
+  .icon-btn{display:block}
+  .head-in{justify-content:space-between;gap:10px}
+  .brand{position:absolute;left:50%;transform:translateX(-50%)}
+  .brand img{height:30px}
+  .hero{min-height:auto;padding:calc(var(--head) + 70px) 0 70px}
+  .pillars{grid-template-columns:1fr;gap:28px}
+  .convener-card{grid-template-columns:1fr;gap:18px}
+  .convener-copy{padding:34px 26px}
+  .convener-photo{min-height:320px}
+  .about{grid-template-columns:1fr}
+  .about-img{min-height:240px}
+  .about-copy{padding:38px 26px}
+  .split{grid-template-columns:1fr;gap:30px}
+  .res-grid{grid-template-columns:1fr;gap:16px}
+  .res{padding:34px 26px}
+  .ev-grid{grid-template-columns:1fr;gap:18px}
+  .aud{gap:18px}
+  .impact{padding:70px 0}
+  .intro{padding:calc(var(--head) + 44px) 0 44px}
+  .form-wrap{padding:40px var(--pad) 70px}
+  .actions{flex-wrap:wrap}
+  .form-note{margin-left:0;width:100%;text-align:left}
+  .notfound{padding:80px 0 90px}
+}
+@media (max-width:520px){
+  .sec-title,.resources h2{font-size:23px;margin-bottom:32px}
+  .split h2{font-size:25px}
+  .hero-btns{gap:12px}
+  .btn-ghost{flex:1 1 auto;padding:14px 18px;font-size:10px;text-align:center}
+  .step{padding:18px 18px;gap:14px}
+  .step svg{flex-basis:28px;width:28px;height:28px}
+  .step-no{font-size:26px}
+  .step-txt h3{font-size:15px}
+}
+
+/* --------------------------------------------------------------------------
+   17. MOTION — entrances and hovers
+   Every rule here is decoration only; the reduced-motion block at the end
+   switches all of it off.
+   -------------------------------------------------------------------------- */
+@keyframes nf-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes nf-drop{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+@keyframes nf-zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+
+/* --- page entrance --- */
+.site-head{animation:nf-drop .6s cubic-bezier(.2,.7,.3,1) both}
+.hero-bg{animation:nf-zoom 1.6s cubic-bezier(.2,.7,.3,1) both}
+.hero h1{animation:nf-rise .8s cubic-bezier(.2,.7,.3,1) .15s both}
+.hero p{animation:nf-rise .8s cubic-bezier(.2,.7,.3,1) .3s both}
+.hero-btns{animation:nf-rise .8s cubic-bezier(.2,.7,.3,1) .45s both}
+.intro-rise{animation:nf-rise .7s cubic-bezier(.2,.7,.3,1) both}
+
+/* --- header --- */
+.brand{transition:opacity .2s ease}
+.brand:hover{opacity:.75}
+.icon-btn{transition:transform .2s ease,opacity .2s ease}
+.icon-btn:hover{transform:scale(1.12)}
+.drawer a{transition:padding-left .2s ease,color .2s ease}
+.drawer a:hover{padding-left:8px;color:var(--mint)}
+
+/* --- pillars --- */
+.pillar{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s ease}
+.pillar:hover{transform:translateX(6px);border-left-color:var(--teal)}
+.pillar h3{transition:color .25s ease}
+.pillar:hover h3{color:var(--teal)}
+
+/* --- convener --- */
+.convener-photo img{transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.convener-photo:hover img{transform:scale(1.04)}
+
+/* --- about --- */
+.about-img img{transition:transform .8s cubic-bezier(.2,.7,.3,1),filter .5s ease}
+.about-img:hover img{transform:scale(1.05)}
+
+/* --- who is this for --- */
+.aud{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.aud:hover{transform:translateX(5px)}
+.aud-ic svg{transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.aud:hover .aud-ic svg{transform:scale(1.14) rotate(-4deg)}
+.aud h3{transition:color .25s ease}
+.aud:hover h3{color:var(--teal)}
+
+/* --- resources --- */
+.res svg{transition:transform .4s cubic-bezier(.2,.7,.3,1)}
+.res:hover svg{transform:translateY(-4px) scale(1.06)}
+
+/* --- events --- */
+.ev-body{transition:border-left-color .3s ease}
+.ev:hover .ev-body{border-left-color:var(--teal)}
+.ev-body h3{transition:color .25s ease}
+.ev:hover .ev-body h3{color:var(--teal)}
+
+/* --- buttons --- */
+.btn-ghost{transition:background .25s ease,border-color .25s ease,transform .25s ease,letter-spacing .25s ease}
+.btn-ghost:hover{transform:translateY(-2px);letter-spacing:.19em}
+
+/* --- footer --- */
+.foot-mail{position:relative;display:inline-block}
+.foot-mail::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--teal);transition:right .35s cubic-bezier(.2,.7,.3,1)}
+.foot-mail:hover{text-decoration:none}
+.foot-mail:hover::after{right:0}
+.foot-tel{transition:color .2s ease}
+.foot-tel:hover{color:var(--mint)}
+.socials svg{transition:transform .25s ease}
+.socials a:hover svg{transform:scale(1.15)}
+
+@media (prefers-reduced-motion:reduce){
+  .site-head,.hero-bg,.hero h1,.hero p,.hero-btns,.intro-rise,.nfm-step,.nfm-done,.nfm-specify.show{animation:none}
+  .pillar:hover,.aud:hover,.nfm-choice:hover,.btn-ghost:hover,.nfm-btn:hover,.step:hover,.ev:hover,.res:hover{transform:none}
+  .convener-photo:hover img,.about-img:hover img,.aud:hover .aud-ic svg,.res:hover svg{transform:none}
+  .nfm-progress-fill{transition:none}
+}
