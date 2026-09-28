@@ -1,0 +1,7 @@
+{
+  "name": "newfrontiers-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "New Frontiers Ministers' Global Network website",
+  "engines": { "node": "22.x" }
+}

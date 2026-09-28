@@ -1,139 +1,90 @@
-/* ==========================================================================
-   New Frontiers Ministers' Global Network — global behaviour
-   Loaded on every page. Header, drawer, search and reveals live here.
-   ========================================================================== */
-(function(){
-  'use strict';
-
-  var isHome = document.body.classList.contains('home');
-
-  /* ------------------------------------------------------------------
-     Header: on the home page it sits transparent over the hero and goes
-     solid once you scroll. Everywhere else it is solid already.
-     ------------------------------------------------------------------ */
-  var head = document.querySelector('.site-head');
-  if (head && isHome) {
-    var onScroll = function(){ head.classList.toggle('stuck', window.scrollY > 40); };
-    addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  }
-
-  /* ------------------------------------------------------------------
-     Section links. The header markup is identical on every page and
-     points at index.html#id, so it works from any of them. On the home
-     page itself, rewrite to bare hashes for smooth in-page scrolling.
-     ------------------------------------------------------------------ */
-  if (isHome) {
-    var links = document.querySelectorAll('.site-head a[href^="index.html#"], .drawer a[href^="index.html#"]');
-    Array.prototype.forEach.call(links, function(a){
-      a.setAttribute('href', a.getAttribute('href').replace('index.html', ''));
-    });
-  }
-
-  /* Old WordPress anchors (#AboutUs, #Resources, #Events) still exist in
-     the wild — send them to the right section instead of nowhere. */
-  var LEGACY = {aboutus:'about', resources:'resources', events:'events', contact:'contact'};
-  function fixLegacyHash(){
-    var h = (location.hash || '').replace('#','').toLowerCase();
-    if (h && LEGACY[h] && !document.getElementById(location.hash.slice(1))) {
-      var el = document.getElementById(LEGACY[h]);
-      if (el) el.scrollIntoView();
-    }
-  }
-  if (isHome) { addEventListener('hashchange', fixLegacyHash); fixLegacyHash(); }
-
-  /* ------------------------------------------------------------------
-     Mobile drawer
-     ------------------------------------------------------------------ */
-  var drawer = document.getElementById('drawer'),
-      menuOpen = document.getElementById('menuOpen'),
-      menuClose = document.getElementById('menuClose');
-
-  function setMenu(open){
-    if (!drawer) return;
-    drawer.classList.toggle('open', open);
-    if (menuOpen) menuOpen.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-  if (menuOpen) menuOpen.onclick = function(){ setMenu(true); };
-  if (menuClose) menuClose.onclick = function(){ setMenu(false); };
-  if (drawer) drawer.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
-
-  /* ------------------------------------------------------------------
-     Search. Everything lives on the home page, so a match either scrolls
-     (when you are already there) or navigates to the right anchor.
-     ------------------------------------------------------------------ */
-  var SECTIONS = [
-    {id:'pillars',    words:'pillars doctrinal purity ministerial integrity kingdom exploits scripture'},
-    {id:'about',      words:'about us story frontier philosophy mission vision nfmgn'},
-    {id:'tribe',      words:'who is this for pastors founders youth campus marketplace apostles creative join tribe'},
-    {id:'onboarding', words:'onboarding process application vetting induction apply join steps'},
-    {id:'resources',  words:'resources exploits lab mentorship archive handbook tech hub htecb downloads'},
-    {id:'events',     words:'events frontier calendar scale session online classroom quarterly summit'},
-    {id:'contact',    words:'contact fellowship email phone call reach social'}
-  ];
-
-  var bar = document.getElementById('searchBar'),
-      input = document.getElementById('searchInput'),
-      searchOpen = document.getElementById('searchOpen'),
-      searchClose = document.getElementById('searchClose');
-
-  if (searchOpen) searchOpen.onclick = function(){ bar.classList.add('open'); input.focus(); };
-  if (searchClose) searchClose.onclick = function(){ bar.classList.remove('open'); };
-
-  addEventListener('keydown', function(e){
-    if (e.key === 'Escape') { setMenu(false); if (bar) bar.classList.remove('open'); }
-  });
-
-  if (bar) bar.addEventListener('submit', function(e){
-    e.preventDefault();
-    var q = input.value.trim().toLowerCase();
-    if (!q) return;
-
-    var hit = null;
-    for (var i = 0; i < SECTIONS.length; i++) {
-      if (SECTIONS[i].id.indexOf(q) > -1 || SECTIONS[i].words.indexOf(q) > -1) { hit = SECTIONS[i].id; break; }
-    }
-    if (!hit && isHome) {
-      var secs = document.querySelectorAll('section[id],footer[id]');
-      for (var j = 0; j < secs.length; j++) {
-        if (secs[j].textContent.toLowerCase().indexOf(q) > -1) { hit = secs[j].id; break; }
-      }
-    }
-
-    if (!hit) {
-      input.value = '';
-      input.placeholder = 'Nothing matches that. Try "events" or "resources".';
-      return;
-    }
-    bar.classList.remove('open');
-    if (isHome) {
-      var el = document.getElementById(hit);
-      if (el) el.scrollIntoView({behavior:'smooth'});
-    } else {
-      location.href = 'index.html#' + hit;
-    }
-  });
-
-  /* ------------------------------------------------------------------
-     Scroll reveal
-     ------------------------------------------------------------------ */
-  var items = document.querySelectorAll('.rv');
-  if (!items.length) return;
-
-  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    Array.prototype.forEach.call(items, function(el){ el.classList.add('in'); });
+/* New Frontiers — navigation, reveals, parallax (from the D-Vine build, unchanged) */
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const head=document.getElementById('head'), hero=document.getElementById('top'), prog=document.getElementById('prog');
+function headState(){ if(!head) return; head.classList.toggle('scrolled', window.scrollY>40 || document.body.classList.contains('solid-head')); }
+function lightHero(){ if(hero) hero.classList.add('lit'); }
+window.addEventListener('load',()=>requestAnimationFrame(lightHero));
+setTimeout(lightHero,300);
+function runCounter(el){
+  if(el.dataset.counted) return; el.dataset.counted='1';
+  const target=+el.dataset.count, cv=el.querySelector('.cv'), dur=1600, t0=performance.now();
+  function tick(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);cv.textContent=Math.round(target*e);if(p<1)requestAnimationFrame(tick);}
+  requestAnimationFrame(tick);
+}
+function corners(){ document.querySelectorAll('.ccard').forEach(c=>{ if(c.querySelector('.corner')) return; const s=document.createElement('span');s.className='corner';s.textContent='↗';c.appendChild(s); }); }
+corners();
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){ e.target.classList.add('in');
+    e.target.querySelectorAll && e.target.querySelectorAll('[data-count]').forEach(runCounter);
+    io.unobserve(e.target);
+  }});},{threshold:.14, rootMargin:'0px 0px -7% 0px'});
+document.querySelectorAll('.r,.stagger,.rvimg').forEach(el=>io.observe(el));
+/* content injected after load (cards, lists) still needs the reveal + corners */
+window.Reveal = { scan(){ corners(); document.querySelectorAll('.r,.stagger,.rvimg').forEach(el=>{ if(!el.classList.contains('in')) io.observe(el); }); } };
+/* Backstop: if IntersectionObserver never fires for something — an odd viewport,
+   a zero-height box at observe time, a browser quirk — reveal it anyway rather
+   than leaving it invisible. */
+function revealAll(){ document.body.classList.add('revealed');
+  document.querySelectorAll('[data-count]').forEach(runCounter); }
+window.addEventListener('load', ()=>setTimeout(revealAll, 2500));
+setTimeout(revealAll, 6000);
+const heroBg=document.querySelector('.hero__bg');
+const heroIn=document.querySelector('.hero__in');
+const r2img=document.querySelector('.r2hero-r img');
+let ticking=false;
+function fx(){
+  const y=window.scrollY, vh=window.innerHeight;
+  const docH=document.documentElement.scrollHeight-vh;
+  if(prog) prog.style.width=(docH>0?Math.min(y/docH*100,100):0)+'%';
+  if(reduce) return;
+  if(window.matchMedia('(max-width:720px)').matches){
+    if(heroBg) heroBg.style.transform='';
+    if(heroIn){ heroIn.style.transform=''; heroIn.style.opacity=''; }
+    if(r2img) r2img.style.transform='scale(1.16)';
     return;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if (!en.isIntersecting) return;
-      var sibs = en.target.parentNode.children,
-          i = Array.prototype.indexOf.call(sibs, en.target);
-      en.target.style.transitionDelay = Math.min(i, 4) * 80 + 'ms';
-      en.target.classList.add('in');
-      io.unobserve(en.target);
-    });
-  }, {rootMargin:'0px 0px -8% 0px', threshold:.12});
-  Array.prototype.forEach.call(items, function(el){ io.observe(el); });
+  if(heroBg) heroBg.style.transform=`translate3d(0,${(y*0.2).toFixed(1)}px,0)`;
+  if(heroIn){ const p=Math.min(y/(vh*0.85),1); heroIn.style.transform=`translateY(${(p*70).toFixed(1)}px)`; heroIn.style.opacity=(1-p*0.95).toFixed(3); }
+  if(r2img){ const r=r2img.parentElement.getBoundingClientRect(); const off=(r.top+r.height/2-vh/2)*-0.04; r2img.style.transform=`translate3d(0,${off.toFixed(1)}px,0) scale(1.16)`; }
+}
+function onScroll(){ headState(); if(!ticking){ requestAnimationFrame(()=>{fx();ticking=false;}); ticking=true; } }
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',fx);
+headState(); fx();
+window.addEventListener('load',()=>setTimeout(fx,100));
+
+/* hero camera: 3D mouse tilt + scroll dolly-in (eased, idles when still) */
+(function(){
+  const cam=document.querySelector('.hero__cam'), heroHead=document.querySelector('.hero-head');
+  if(!cam || !hero || reduce) return;
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  let tx=0,ty=0,cx=0,cy=0,running=false;
+  function frame(){
+    cx+=(tx-cx)*0.07; cy+=(ty-cy)*0.07;
+    const vh=window.innerHeight, y=window.scrollY;
+    const p=Math.min(Math.max(y/vh,0),1);
+    const s=1.06+p*0.3;                         /* push into the house as you scroll */
+    cam.style.transform='translate3d('+(-cx*30).toFixed(2)+'px,'+(-cy*20).toFixed(2)+'px,0) '+
+      'rotateY('+(cx*5.5).toFixed(3)+'deg) rotateX('+(-cy*4).toFixed(3)+'deg) scale('+s.toFixed(4)+')';
+    if(heroHead) heroHead.style.transform='translate3d('+(cx*24).toFixed(2)+'px,'+(cy*14).toFixed(2)+'px,0)';
+    if(Math.abs(tx-cx)>0.0004 || Math.abs(ty-cy)>0.0004) requestAnimationFrame(frame); else running=false;
+  }
+  function kick(){ if(!running){ running=true; requestAnimationFrame(frame); } }
+  if(fine){
+    hero.addEventListener('pointermove',e=>{ const r=hero.getBoundingClientRect();
+      tx=(e.clientX-r.left)/r.width-0.5; ty=(e.clientY-r.top)/r.height-0.5; kick(); });
+    hero.addEventListener('pointerleave',()=>{ tx=0; ty=0; kick(); });
+  }
+  window.addEventListener('scroll',()=>{ if(window.scrollY<window.innerHeight*1.3) kick(); },{passive:true});
+  window.addEventListener('resize',kick);
+  kick();
 })();
+const burger=document.getElementById('burger');
+const mobileNav=document.getElementById('mobileNav');
+const navClose=document.getElementById('navClose');
+function openNav(){ if(!mobileNav) return; mobileNav.classList.add('open'); document.body.classList.add('nav-locked'); burger.setAttribute('aria-expanded','true'); }
+function closeNav(){ if(!mobileNav) return; mobileNav.classList.remove('open'); document.body.classList.remove('nav-locked'); burger.setAttribute('aria-expanded','false'); }
+if(burger) burger.addEventListener('click',openNav);
+if(navClose) navClose.addEventListener('click',closeNav);
+if(mobileNav) mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && !document.getElementById('pvViewer').classList.contains('pv-open')) closeNav(); });
