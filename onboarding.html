@@ -1,59 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Onboarding Form &mdash; New Frontiers Ministers' Global Network</title>
-<meta name="description" content="Apply to join the New Frontiers Ministers' Global Network under the mentorship of Pastor Dele Bamgboye.">
-<link rel="canonical" href="https://newfrontiersglobal.online/onboarding.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta charset="UTF-8" />
+<script>document.documentElement.className="js"</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Onboarding Form — New Frontiers Ministers' Global Network</title>
+<meta name="description" content="Apply to join the New Frontiers Ministers' Global Network under the mentorship of Pastor Dele Bamgboye." />
+<meta property="og:title" content="New Frontiers Ministers' Global Network" />
+<meta property="og:description" content="A global mandate to raise spiritually grounded, mentally robust, and technologically empowered ministers for the next move of God." />
+<meta property="og:image" content="https://newfrontiersglobal.online/images/hero-audience.jpg" />
+<meta property="og:url" content="https://newfrontiersglobal.online/onboarding.html" />
+<link rel="canonical" href="https://newfrontiersglobal.online/onboarding.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/site.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+<link rel="stylesheet" href="assets/css/nf.css" />
 </head>
-<body>
+<body class="solid-head" data-base="">
+<div class="scroll-prog" id="prog"></div>
 
-<!-- GLOBAL HEADER — identical on every page. Edit assets/css/site.css and assets/js/site.js. -->
 <header class="site-head" id="head">
-  <div class="head-in">
-    <button class="icon-btn" id="menuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
-      <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
-
-    <a class="brand" href="index.html" aria-label="New Frontiers Ministers' Global Network — home">
-      <img src="images/logo-white.png" alt="New Frontiers Ministers' Global Network" width="700" height="152">
-    </a>
-
-    <nav class="nav" aria-label="Primary">
-      <a href="index.html#about">About Us</a>
-      <a href="index.html#resources">Resources</a>
+  <div class="wrap nav">
+    <a class="brand brand--logo fn" href="index.html" aria-label="New Frontiers — home"><img src="images/logo-white.png" alt="New Frontiers Ministers' Global Network" width="700" height="152" /></a>
+    <div class="nav-pill fn n2">
+      <a href="index.html#top" >Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#network">Network</a>
       <a href="index.html#events">Events</a>
-    </nav>
-
-    <a class="btn-book" href="onboarding.html">Book a meeting</a>
-
-    <button class="icon-btn" id="searchOpen" aria-label="Search this page" aria-controls="searchBar">
-      <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-    </button>
+      <a href="index.html#resources">Resources</a>
+    </div>
+    <a class="nav-contact fn n3" href="onboarding.html"><span>Book a meeting</span> <span class="badge">&#8599;</span></a>
+    <button class="burger fn n3" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<nav class="drawer" id="drawer" aria-label="Mobile">
-  <button class="drawer-close" id="menuClose" aria-label="Close menu">&times;</button>
-  <a href="index.html#about">About Us</a>
-  <a href="index.html#tribe">Who is this for?</a>
-  <a href="index.html#resources">Resources</a>
-  <a href="index.html#events">Events</a>
-  <a class="btn-book" href="onboarding.html">Book a meeting</a>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+  <div class="wrap">
+    <div class="mobile-nav__top">
+      <a class="brand brand--logo" href="index.html"><img src="images/logo-white.png" alt="New Frontiers Ministers' Global Network" width="700" height="152" /></a>
+      <button class="mobile-nav__close" id="navClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-nav__links">
+      <a href="index.html#top" >Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#network">Network</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#resources">Resources</a>
+      <a href="onboarding.html">Apply</a>
+    </div>
+    <div class="mobile-nav__cta">
+      <a class="btn-contact" href="onboarding.html"><span>Book a meeting</span> <span class="badge">&#8599;</span></a>
+    </div>
+  </div>
 </nav>
 
-<form class="search-bar" id="searchBar" role="search">
-  <input id="searchInput" type="search" placeholder="Jump to a section — pillars, about, events&hellip;" aria-label="Search this page">
-  <button type="submit">Go</button>
-  <button type="button" class="x" id="searchClose" aria-label="Close search">&times;</button>
-</form>
-
-<main class="page-top">
+<section class="pagehead">
+  <div class="wrap">
+    <div class="crumb eyebrow"><a href="index.html">Home</a><span>/</span><span>Apply</span></div>
+    <div class="inner">
+      <h1>Your application to the network</h1>
+      <p class="lead r">Six short sections — about ten minutes. Our leadership team prayerfully reviews every application before induction.</p>
+    </div>
+  </div>
+</section>
+<section class="sec-pad nf-form">
+<div class="wrap">
 <div class="nfm-wrap intro-rise">
   <form id="nfmForm" class="nfm-card" novalidate autocomplete="on">
     <div class="nfm-topbar"></div>
@@ -326,24 +339,28 @@
     </div>
   </form>
 </div>
-</main>
+</div>
+</section>
 
-<!-- GLOBAL FOOTER -->
-<footer class="site-foot" id="contact">
+<footer class="foot" id="contact">
   <div class="wrap">
-    <p class="foot-label">Contact &amp; Fellowship</p>
-    <a class="foot-mail" href="mailto:info@newfrontiersglobal.online">info@newfrontiersglobal.online</a>
-    <div><a class="foot-tel" href="tel:+2348028295917">+234 (0) 802 829 5917</a></div>
-    <div class="socials">
-      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H6v3h2v8h3v-8h2.5l.5-3h-3V7.5c0-.8.7-1.5 1.5-1.5H15V3z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.7 0 3 0 4.1.1 1.1 0 1.8.2 2.4.5.6.2 1.1.5 1.6 1s.8 1 1 1.6c.3.6.5 1.3.5 2.4.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1.1-.2 1.8-.5 2.4-.2.6-.5 1.1-1 1.6s-1 .8-1.6 1c-.6.3-1.3.5-2.4.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1.1 0-1.8-.2-2.4-.5-.6-.2-1.1-.5-1.6-1s-.8-1-1-1.6c-.3-.6-.5-1.3-.5-2.4C2 15 2 14.7 2 12s0-3 .1-4.1c0-1.1.2-1.8.5-2.4.2-.6.5-1.1 1-1.6s1-.8 1.6-1c.6-.3 1.3-.5 2.4-.5C8.7 2 9 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-3.3a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 8H4.2v12h2.7V8zM5.5 3.5A1.6 1.6 0 1 0 5.5 7a1.6 1.6 0 0 0 0-3.5zM20 13.6c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3.1 1.7V8h-2.7c0 .8 0 12 0 12h2.7v-6.7c0-.4 0-.7.1-1 .3-.7.9-1.4 1.9-1.4 1.3 0 1.9.9 1.9 2.4V20H20v-6.4z"/></svg></a>
+    <div class="foot-row r">
+      <a class="brand brand--logo" href="index.html"><img src="images/logo-white.png" alt="New Frontiers Ministers' Global Network" width="700" height="152" loading="lazy" /></a>
+      <nav class="foot-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#network">Network</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#resources">Resources</a>
+        <a href="onboarding.html">Apply</a>
+      </nav>
+      <a class="tel" href="tel:+2348028295917" style="color:#fff;font-weight:600;font-size:.85rem">+234 (0) 802 829 5917</a>
     </div>
-    <p class="copy">&copy; 2026 New Frontiers Global. All Rights Reserved.</p>
+    <div class="foot-base"><span>© 2026 New Frontiers Global. All Rights Reserved.</span><a href="mailto:info@newfrontiersglobal.online">info@newfrontiersglobal.online</a></div>
   </div>
 </footer>
 
-<script src="assets/js/site.js" defer></script>
+<script src="assets/js/site.js"></script>
 <script src="assets/js/form.js" defer></script>
+<script src="assets/js/chat.js" defer></script>
 </body>
 </html>

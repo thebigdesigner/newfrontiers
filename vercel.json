@@ -68,5 +68,11 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/chat.js": {
+      "includeFiles": "content/**",
+      "maxDuration": 20
+    }
+  }
 }

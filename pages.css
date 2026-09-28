@@ -1,0 +1,26 @@
+/* D-Vine Consults — inner page furniture (built on the same tokens as site.css) */
+body.solid-head{padding-top:0}
+.pagehead{padding:clamp(7rem,14vh,10rem) 0 clamp(2.5rem,6vh,4rem);border-bottom:1px solid var(--line)}
+.pagehead .inner{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.pagehead h1{font-size:clamp(2.2rem,5.4vw,4rem);font-weight:400;letter-spacing:-.03em;max-width:16ch}
+.pagehead .lead{max-width:40ch}
+.crumb{display:flex;gap:.5rem;align-items:center;margin-bottom:1rem}
+.crumb a{color:var(--muted)}
+.crumb span{color:var(--muted-2)}
+
+.sec-pad{padding:clamp(3rem,7vh,6rem) 0}
+.grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+.contact-card{background:var(--panel);border:1px solid var(--line-warm);border-radius:26px;padding:clamp(1.6rem,3vw,2.4rem)}
+.field{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem}
+.field label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.field input,.field textarea{font:inherit;font-size:.95rem;color:var(--text);background:#fff;
+  border:1px solid var(--line-warm);border-radius:12px;padding:.85rem 1rem;width:100%}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.form-note{font-size:.78rem;color:var(--muted);margin-top:.8rem}
+.detail-list{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem}
+.detail-list div span{display:block;font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted-2);margin-bottom:.3rem}
+.detail-list div b{font-weight:500;font-size:1.05rem}
+.note-row{display:flex;gap:1rem;align-items:flex-start;margin-top:1.6rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+@media(max-width:860px){ .grid-2{grid-template-columns:1fr} }

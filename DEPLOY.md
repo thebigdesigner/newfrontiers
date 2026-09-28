@@ -5,16 +5,21 @@ Static site. No build step, no dependencies, no framework.
 ## Files
 
 ```
-index.html          home (one page — About / Resources / Events are anchors)
-onboarding.html     six-section application form
-404.html            not-found page (Vercel serves this automatically)
-vercel.json         redirects, caching, security headers
-robots.txt          points at the sitemap
-sitemap.xml         two URLs
-assets/css/site.css all styling for every page
-assets/js/site.js   header, drawer, search, scroll reveals — loaded on every page
-assets/js/form.js   form logic + Google Apps Script endpoint
-images/             photos, logo, event artwork
+index.html            home (one page — About / Network / Events / Resources are anchors)
+onboarding.html       six-section application form (markup unchanged from the original)
+404.html              not-found page (Vercel serves this automatically)
+vercel.json           redirects, caching, security headers, chat function config
+robots.txt / sitemap.xml
+assets/css/site.css   the D-Vine design system (unchanged)
+assets/css/pages.css  D-Vine inner-page styles (unchanged)
+assets/css/nf.css     New Frontiers additions: logo, globe panel, portrait, form theme
+assets/js/site.js     D-Vine nav, reveals, counters, hero camera (unchanged)
+assets/js/globe.js    interactive 3D globe (uses three.js r128 from cdnjs)
+assets/js/form.js     form logic + Google Apps Script endpoint (unchanged)
+assets/js/chat.js     website assistant widget (WhatsApp hand-off)
+api/chat.js           assistant server function (Google Gemini)
+content/network.json  what the assistant knows — edit this to update its answers
+images/               photos, logo, event artwork, convener cut-out
 ```
 
 ## 1. Push to Git
@@ -81,3 +86,25 @@ WordPress is currently serving this domain. To avoid downtime:
 - No favicon
 - "Watch the vision film" points at the About section, not a video
 - The Quarterly Summit artwork has "Quaterly" misspelled inside the image itself
+
+
+## Website assistant (chat)
+
+The chat bubble works in two modes:
+
+- **Without a key** it acts as a WhatsApp shortcut to +234 802 829 5917.
+- **With a key** it answers questions about the network and hands off to
+  WhatsApp with a summary of the conversation.
+
+To switch on the AI answers, add a Google Gemini API key in Vercel:
+Project → Settings → Environment Variables → `GEMINI_API_KEY` (Production),
+then redeploy. Or from a terminal:
+
+```
+vercel env add GEMINI_API_KEY production
+vercel --prod
+```
+
+To change what it knows (events, dates, fees, new resources), edit
+`content/network.json` and redeploy. It is told never to invent dates, fees or
+venues that aren't in that file.
