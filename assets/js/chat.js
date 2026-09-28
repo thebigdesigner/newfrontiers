@@ -28,7 +28,7 @@
   const css = `
 .dvc{--dvc-ink:var(--ink,#15161A);--dvc-text:var(--text,#191A1F);--dvc-muted:var(--muted,#7E818A);
   --dvc-panel:var(--panel,#F7F5F1);--dvc-warm:var(--warm,#EDEBE6);--dvc-line:var(--line-warm,#DDDAD2);
-  --dvc-a:var(--accent,#223160);--dvc-on:var(--on-ink,#ECEAE5);--dvc-wa:#25D366;--dvc-wa-d:#1DA851;font-family:"Raleway",system-ui,sans-serif}
+  --dvc-a:var(--accent,#223160);--dvc-on:var(--on-ink,#ECEAE5);--dvc-wa:#25D366;--dvc-wa-d:#1DA851;font-family:"Inter",system-ui,sans-serif}
 /* launcher — ink, like the site's primary buttons */
 .dvc-launch{position:fixed;right:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;
   background:var(--dvc-ink);color:#fff;display:flex;align-items:center;justify-content:center;
@@ -75,14 +75,14 @@
 .dvc-m p{margin:0}.dvc-m p+p{margin-top:.45rem}
 /* WhatsApp hand-off — the site's pill button with a round badge */
 .dvc-wa-card{align-self:flex-start;display:inline-flex;align-items:center;gap:.7rem;border:0;cursor:pointer;
-  background:var(--dvc-wa);color:#fff;font:600 .84rem/1 "Raleway",sans-serif;padding:.45rem .5rem .45rem 1.1rem;border-radius:100px;
+  background:var(--dvc-wa);color:#fff;font:600 .84rem/1 "Inter",sans-serif;padding:.45rem .5rem .45rem 1.1rem;border-radius:100px;
   box-shadow:0 10px 22px -12px rgba(37,211,102,.75);transition:transform .45s var(--eo,cubic-bezier(.16,1,.3,1)),background .3s}
 .dvc-wa-card:hover{background:var(--dvc-wa-d)}
 .dvc-wa-card:hover{transform:translateY(-2px)}
 .dvc-wa-card .dvc-bdg{width:30px;height:30px;border-radius:50%;background:#fff;color:var(--dvc-wa-d);display:grid;place-items:center}
 .dvc-wa-card svg{width:16px;height:16px}
 .dvc-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
-.dvc-chip{border:1px solid var(--dvc-line);background:#fff;color:var(--dvc-text);font:500 .8rem/1 "Raleway",sans-serif;
+.dvc-chip{border:1px solid var(--dvc-line);background:#fff;color:var(--dvc-text);font:500 .8rem/1 "Inter",sans-serif;
   padding:.6rem .9rem;border-radius:100px;cursor:pointer;transition:background .35s,color .35s,border-color .35s}
 .dvc-chip:hover{background:var(--dvc-ink);color:#fff;border-color:var(--dvc-ink)}
 .dvc-typing{align-self:flex-start;background:var(--dvc-panel);border:1px solid var(--dvc-line);border-radius:16px;border-bottom-left-radius:5px;padding:.75rem .9rem;display:flex;gap:4px}
@@ -90,7 +90,7 @@
 .dvc-typing i:nth-child(2){animation-delay:.15s}.dvc-typing i:nth-child(3){animation-delay:.3s}
 @keyframes dvcDot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
 .dvc-form{display:flex;align-items:flex-end;gap:.5rem;padding:.75rem;border-top:1px solid var(--dvc-line);background:#fff}
-.dvc-in{flex:1;resize:none;border:1px solid var(--dvc-line);border-radius:100px;padding:.68rem 1rem;font:500 .9rem/1.4 "Raleway",sans-serif;
+.dvc-in{flex:1;resize:none;border:1px solid var(--dvc-line);border-radius:100px;padding:.68rem 1rem;font:500 .9rem/1.4 "Inter",sans-serif;
   color:var(--dvc-text);background:var(--paper,#FBFAF8);max-height:110px;outline:none;transition:border-color .25s,background .25s}
 .dvc-in:focus{border-color:var(--dvc-ink);background:#fff}
 .dvc-in.multi{border-radius:16px}

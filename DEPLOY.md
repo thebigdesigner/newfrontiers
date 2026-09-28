@@ -6,20 +6,20 @@ Static site. No build step, no dependencies, no framework.
 
 ```
 index.html            home (one page — About / Network / Events / Resources are anchors)
-onboarding.html       six-section application form (markup unchanged from the original)
+onboarding.html       six-section application form (form markup unchanged from the original)
 404.html              not-found page (Vercel serves this automatically)
 vercel.json           redirects, caching, security headers, chat function config
+package.json          pins Node 22 for the chat function
 robots.txt / sitemap.xml
-assets/css/site.css   the D-Vine design system (unchanged)
-assets/css/pages.css  D-Vine inner-page styles (unchanged)
-assets/css/nf.css     New Frontiers additions: logo, globe panel, portrait, form theme
-assets/js/site.js     D-Vine nav, reveals, counters, hero camera (unchanged)
+assets/css/nf.css     the whole site: tokens, header, hero slider, every section, footer, responsive
+assets/css/form.css   onboarding form only (rules unchanged from the original build)
+assets/js/nf.js       header, mobile drawer, reveals, counters, hero slider, nav highlighting
 assets/js/globe.js    interactive 3D globe (uses three.js r128 from cdnjs)
 assets/js/form.js     form logic + Google Apps Script endpoint (unchanged)
 assets/js/chat.js     website assistant widget (WhatsApp hand-off)
 api/chat.js           assistant server function (Google Gemini)
 content/network.json  what the assistant knows — edit this to update its answers
-images/               photos, logo, event artwork, convener cut-out
+images/               photos, logo, event artwork, convener cut-out, favicon
 ```
 
 ## 1. Push to Git
@@ -76,15 +76,14 @@ WordPress is currently serving this domain. To avoid downtime:
   internal link to extensionless paths.
 - `/images/` and `/assets/` are cached for a year as immutable. If you replace a
   photo or edit the CSS, **rename the file** or visitors keep the old one.
-- Editing the header or footer means editing all three HTML files — the markup is
-  deliberately identical in each. Styling and behaviour are single-source in
-  `assets/css/site.css` and `assets/js/site.js`.
+- The header, footer and icon sprite are identical in all three HTML files. Edit one,
+  copy to the other two. Styling and behaviour are single-source in `assets/css/nf.css`
+  and `assets/js/nf.js`.
+- Colours and type live in the `:root` block at the top of `nf.css`. Change them there.
 
 ## Still outstanding
 
-- Footer social links are `#` placeholders
-- No favicon
-- "Watch the vision film" points at the About section, not a video
+- Footer has no social links yet
 - The Quarterly Summit artwork has "Quaterly" misspelled inside the image itself
 
 
