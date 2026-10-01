@@ -80,8 +80,8 @@
 
     /* ---- the network: hub + nations ---- */
     var HUB = [6.52, 3.38]; /* Lagos */
-    var DEST = [[51.5,-.13],[40.7,-74],[29.8,-95.4],[43.7,-79.4],[5.6,-.19],[-1.29,36.8],[-26.2,28],
-                [25.2,55.3],[52.5,13.4],[-23.5,-46.6],[1.35,103.8],[-33.9,151.2],[9.06,7.49],[-4.3,15.3],[53.5,-2.2]];
+    /* the nations in the network: Ghana, United Kingdom, United States, Canada (+ Abuja at home) */
+    var DEST = [[5.6,-.19],[51.5,-.13],[53.5,-2.2],[40.7,-74],[29.8,-95.4],[38.9,-77],[43.7,-79.4],[45.4,-75.7],[9.06,7.49]];
     var gold = new THREE.Color(0x4fccbe);
     var hubV = vec(HUB[0], HUB[1], 1.004);
     var arcs = [];
@@ -112,7 +112,7 @@
     ring.position.copy(hubV); ring.lookAt(hubV.clone().multiplyScalar(2)); world.add(ring);
 
     /* face Africa / the Atlantic first */
-    var yaw = -Math.PI / 2 - 24 * Math.PI / 180, pitch = .32;   /* centre on longitude 24°E */
+    var yaw = -Math.PI / 2 + 18 * Math.PI / 180, pitch = .42;   /* centre on longitude 18°W: West Africa, UK and North America in view */
 
     /* ---- interaction: drag with inertia ---- */
     var dragging = false, lx = 0, ly = 0, vy = 0, vp = 0, idle = 0;

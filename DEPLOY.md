@@ -6,18 +6,24 @@ Static site. No build step, no dependencies, no framework.
 
 ```
 index.html            home (one page — About / Network / Events / Resources are anchors)
+event-*.html          one page per event (Scale Session, Online Classroom, Quarterly Summit)
+archive.html          Mentorship Archive: audio and video messages (Google Drive links)
+ebooks.html           E-Books library (Google Drive links)
 onboarding.html       six-section application form (form markup unchanged from the original)
 404.html              not-found page (Vercel serves this automatically)
 vercel.json           redirects, caching, security headers, chat function config
 package.json          pins Node 22 for the chat function
 robots.txt / sitemap.xml
-assets/css/nf.css     the whole site: tokens, header, hero slider, every section, footer, responsive
+assets/css/nf-3.css   the whole site: tokens, header, hero slider, every section, footer, responsive
 assets/css/form.css   onboarding form only (rules unchanged from the original build)
-assets/js/nf.js       header, mobile drawer, reveals, counters, hero slider, nav highlighting
-assets/js/globe.js    interactive 3D globe (uses three.js r128 from cdnjs)
+assets/js/nf-3.js     header, mobile drawer, reveals, counters, hero slider, nav highlighting
+assets/js/globe-2.js  interactive 3D globe (uses three.js r128 from cdnjs)
 assets/js/form.js     form logic + Google Apps Script endpoint (unchanged)
 assets/js/chat.js     website assistant widget (WhatsApp hand-off)
 api/chat.js           assistant server function (Google Gemini)
+content/events.js     photos and videos shown on each event page — edit to add new seasons
+content/library.js    archive messages and e-books with their Drive links — edit to add items
+assets/js/pages.js    renders the event galleries, archive and e-books from those two files
 content/network.json  what the assistant knows — edit this to update its answers
 images/               photos, logo, event artwork, convener cut-out, favicon
 ```
@@ -77,11 +83,27 @@ WordPress is currently serving this domain. To avoid downtime:
 - `/images/` and `/assets/` are cached for a year as immutable. If you replace a
   photo or edit the CSS, **rename the file** or visitors keep the old one.
 - The header, footer and icon sprite are identical in all three HTML files. Edit one,
-  copy to the other two. Styling and behaviour are single-source in `assets/css/nf.css`
-  and `assets/js/nf.js`.
-- Colours and type live in the `:root` block at the top of `nf.css`. Change them there.
+  copy to the other two. Styling and behaviour are single-source in `assets/css/nf-3.css`
+  and `assets/js/nf-3.js`.
+- Colours and type live in the `:root` block at the top of `nf-3.css`. Change them there.
+
+## Updating the archive, e-books and event galleries
+
+Everything editable lives in `content/` (not cached for a year, so changes show
+on the next deploy):
+
+- **Add a message or book:** open `content/library.js`, copy a line, change the
+  title and paste the Google Drive link into `url`. Empty `url` = "Coming soon".
+- **Add event photos:** put the photo in `images/` with a new file name, then list
+  it in `content/events.js` under that event's season.
+- **Add event videos:** paste a YouTube or Google Drive video link in `content/events.js`.
+  Drive videos need sharing set to "Anyone with the link" to play on the page.
 
 ## Still outstanding
+
+- Replace the sample message/book titles in `content/library.js` and add Drive links
+- Replace the placeholder event photos in `content/events.js` with real ones
+- The Tech Hub button still opens WhatsApp until its page is built
 
 - Footer has no social links yet
 - The Quarterly Summit artwork has "Quaterly" misspelled inside the image itself

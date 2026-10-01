@@ -34,11 +34,12 @@ function knowledge(){
     'THE THREE PILLARS:\n' + list(n.pillars),
     'WHO IT IS FOR:\n' + list(n.audience),
     'ONBOARDING PROCESS:\n' + list(n.onboarding),
-    'RESOURCES (THE EXPLOITS LAB):\n' + list(n.resources),
-    'EVENTS (THE FRONTIER CALENDAR):\n' + list(n.events),
+    'RESOURCES AND EXPLOITS LAB:\n' + list(n.resources),
+    'EVENTS (THE NEW FRONTIER CALENDAR):\n' + list(n.events),
+    'NATIONS: ' + (n.nations || ''),
     'CONTACT: ' + (n.contact || ''),
     'NOT PUBLISHED (the team confirms directly): ' + (n.unknowns || ''),
-    'WEBSITE PAGES: / (home, with sections About, The Network, Who it\'s for, Onboarding, Resources, Events, Contact), /onboarding.html (application form)'
+    'WEBSITE PAGES: / (home, with sections About, The three pillars, Who it\'s for, How joining works, The Convener, The Network (nations), Events, Resources, Contact), /onboarding.html (application form)'
   ].join('\n\n');
   return KNOWLEDGE;
 }

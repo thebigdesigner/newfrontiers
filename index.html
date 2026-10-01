@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/nf.css" />
+<link rel="stylesheet" href="assets/css/nf-3.css" />
 </head>
 <body>
 <svg class="sr" aria-hidden="true" focusable="false"><defs>
@@ -35,6 +35,7 @@
 <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18l4.5-5 3.5 3 6-8"/><path d="M15 8h4v4"/></symbol>
 <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.2 19 6v5.5c0 4.3-2.9 7.6-7 9.3-4.1-1.7-7-5-7-9.3V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
 <symbol id="i-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3.6v16.8M7.2 8.4h9.6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M10 8.6v6.8l5.4-3.4z"/></symbol>
 </defs></svg>
 <header class="hd" id="hd">
   <div class="wrap hd-in">
@@ -113,7 +114,6 @@
     <div class="about-l rv">
       <h2>About the network</h2>
       <p>Born out of a divine burden to mentor and father a new generation of leaders, NFMGN is an incubator for ministers who are hungry for a shift and continued relevance in the discharge of their God-given assignments. Special attention is paid to balancing family life and ministry.</p>
-      <a class="btn" href="onboarding.html">Join the network <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="quad rv-stagger">
       <div><div class="n" data-count="12"><span class="cv">0</span>+</div><div class="l">Online classes a year</div></div>
@@ -160,24 +160,8 @@
   </div>
 </section>
 
-<!-- EVENTS CATALOGUE -->
-<section class="sec sec--grey" id="events">
-  <div class="wrap cat-grid">
-    <div class="cat-intro rv">
-      <h2>The Frontier Calendar</h2>
-      <p>Three rhythms that keep the network growing together — personal, monthly and global.</p>
-      <a class="pill" href="onboarding.html">Join to take part <svg class="ico"><use href="#i-arrow"/></svg></a>
-    </div>
-    <div class="cat-cards rv-stagger">
-      <article class="cat-card"><figure><img src="images/event-scale-session.jpg" alt="Scale Session artwork" loading="lazy" /></figure><h3>Scale Session</h3><p>Direct mentorship with the Convener</p></article>
-      <article class="cat-card"><figure><img src="images/event-online-classroom.jpg" alt="Online Classroom artwork" loading="lazy" /></figure><h3>Online Classroom</h3><p>Monthly online course session</p></article>
-      <article class="cat-card"><figure><img src="images/event-quarterly-summit.jpg" alt="The Quarterly Summit artwork" loading="lazy" /></figure><h3>The Quarterly Summit</h3><p>A global gathering of ministers</p></article>
-    </div>
-  </div>
-</section>
-
 <!-- HOW IT WORKS -->
-<section class="sec" id="onboarding">
+<section class="sec sec--grey" id="onboarding">
   <div class="wrap">
     <div class="sec-head rv">
       <h2>How joining works</h2>
@@ -232,6 +216,48 @@
   </div>
 </section>
 
+<!-- CONVENER -->
+<section class="sec" id="convener">
+  <div class="wrap">
+    <div class="conv rv">
+      <div class="conv-l">
+        <h2>The Convener's welcome</h2>
+        <blockquote>
+          &ldquo;We are not just a network; we are a company of visionary and purposeful agents of change. This is a community that provides a safe place for fellowship, connection &amp; encouragement.&rdquo;
+          <cite>Pastor Dele Bamgboye, Convener</cite>
+        </blockquote>
+      </div>
+      <div class="conv-r">
+        <img src="images/convener-cutout.png" alt="Pastor Dele Bamgboye, Convener of New Frontiers" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK / GLOBE -->
+<section class="sec" id="network">
+  <div class="wrap">
+    <div class="net rv">
+      <div class="sec-head">
+        <h2>One network, many nations</h2>
+        <p>From a single burden in Nigeria to ministers in five nations. Drag the globe to turn the world.</p>
+      </div>
+      <div class="net-grid">
+        <div class="globe-box" id="globe" role="img" aria-label="Interactive globe showing the network reaching Ghana, the United Kingdom, the United States and Canada from Nigeria">
+          <div class="globe-fallback"></div>
+        </div>
+        <ul class="nations rv-stagger" aria-label="Nations in the network">
+          <li class="nation nation--home"><span class="flag" aria-hidden="true"><svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="60" height="40" fill="#fff"/><rect width="20" height="40" fill="#008751"/><rect x="40" width="20" height="40" fill="#008751"/></svg></span><div><h3>Nigeria</h3><p>Where the network began</p></div><span class="nation-hub">Home</span></li>
+          <li class="nation"><span class="flag" aria-hidden="true"><svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="60" height="40" fill="#006b3f"/><rect width="60" height="26.67" fill="#fcd116"/><rect width="60" height="13.33" fill="#ce1126"/><polygon points="30.00,13.80 31.47,17.98 35.90,18.08 32.38,20.77 33.64,25.02 30.00,22.50 26.36,25.02 27.62,20.77 24.10,18.08 28.53,17.98" fill="#000"/></svg></span><div><h3>Ghana</h3><p>West Africa</p></div></li>
+          <li class="nation"><span class="flag" aria-hidden="true"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="ukt"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukt)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg></span><div><h3>United Kingdom</h3><p>Europe</p></div></li>
+          <li class="nation"><span class="flag" aria-hidden="true"><svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="60" height="40" fill="#fff"/><rect y="0.000" width="60" height="3.077" fill="#b22234"/><rect y="6.154" width="60" height="3.077" fill="#b22234"/><rect y="12.308" width="60" height="3.077" fill="#b22234"/><rect y="18.462" width="60" height="3.077" fill="#b22234"/><rect y="24.615" width="60" height="3.077" fill="#b22234"/><rect y="30.769" width="60" height="3.077" fill="#b22234"/><rect y="36.923" width="60" height="3.077" fill="#b22234"/><rect width="24" height="21.538" fill="#3c3b6e"/><circle cx="2.40" cy="2.20" r=".75" fill="#fff"/><circle cx="6.70" cy="2.20" r=".75" fill="#fff"/><circle cx="11.00" cy="2.20" r=".75" fill="#fff"/><circle cx="15.30" cy="2.20" r=".75" fill="#fff"/><circle cx="19.60" cy="2.20" r=".75" fill="#fff"/><circle cx="23.90" cy="2.20" r=".75" fill="#fff"/><circle cx="4.55" cy="4.80" r=".75" fill="#fff"/><circle cx="8.85" cy="4.80" r=".75" fill="#fff"/><circle cx="13.15" cy="4.80" r=".75" fill="#fff"/><circle cx="17.45" cy="4.80" r=".75" fill="#fff"/><circle cx="21.75" cy="4.80" r=".75" fill="#fff"/><circle cx="2.40" cy="7.40" r=".75" fill="#fff"/><circle cx="6.70" cy="7.40" r=".75" fill="#fff"/><circle cx="11.00" cy="7.40" r=".75" fill="#fff"/><circle cx="15.30" cy="7.40" r=".75" fill="#fff"/><circle cx="19.60" cy="7.40" r=".75" fill="#fff"/><circle cx="23.90" cy="7.40" r=".75" fill="#fff"/><circle cx="4.55" cy="10.00" r=".75" fill="#fff"/><circle cx="8.85" cy="10.00" r=".75" fill="#fff"/><circle cx="13.15" cy="10.00" r=".75" fill="#fff"/><circle cx="17.45" cy="10.00" r=".75" fill="#fff"/><circle cx="21.75" cy="10.00" r=".75" fill="#fff"/><circle cx="2.40" cy="12.60" r=".75" fill="#fff"/><circle cx="6.70" cy="12.60" r=".75" fill="#fff"/><circle cx="11.00" cy="12.60" r=".75" fill="#fff"/><circle cx="15.30" cy="12.60" r=".75" fill="#fff"/><circle cx="19.60" cy="12.60" r=".75" fill="#fff"/><circle cx="23.90" cy="12.60" r=".75" fill="#fff"/><circle cx="4.55" cy="15.20" r=".75" fill="#fff"/><circle cx="8.85" cy="15.20" r=".75" fill="#fff"/><circle cx="13.15" cy="15.20" r=".75" fill="#fff"/><circle cx="17.45" cy="15.20" r=".75" fill="#fff"/><circle cx="21.75" cy="15.20" r=".75" fill="#fff"/><circle cx="2.40" cy="17.80" r=".75" fill="#fff"/><circle cx="6.70" cy="17.80" r=".75" fill="#fff"/><circle cx="11.00" cy="17.80" r=".75" fill="#fff"/><circle cx="15.30" cy="17.80" r=".75" fill="#fff"/><circle cx="19.60" cy="17.80" r=".75" fill="#fff"/><circle cx="23.90" cy="17.80" r=".75" fill="#fff"/><circle cx="4.55" cy="20.40" r=".75" fill="#fff"/><circle cx="8.85" cy="20.40" r=".75" fill="#fff"/><circle cx="13.15" cy="20.40" r=".75" fill="#fff"/><circle cx="17.45" cy="20.40" r=".75" fill="#fff"/><circle cx="21.75" cy="20.40" r=".75" fill="#fff"/></svg></span><div><h3>United States</h3><p>North America</p></div></li>
+          <li class="nation"><span class="flag" aria-hidden="true"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><rect width="60" height="30" fill="#fff"/><rect width="15" height="30" fill="#d52b1e"/><rect x="45" width="15" height="30" fill="#d52b1e"/><g transform="translate(19.5 3.2) scale(.21)"><polygon points="50,8 56,20 63,17 60,37 72,25 75,31 86,28 82,41 88,44 70,57 73,65 54,61 55,84 45,84 46,61 27,65 30,57 12,44 18,41 14,28 25,31 28,25 40,37 37,17 44,20" fill="#d52b1e"/></g></svg></span><div><h3>Canada</h3><p>North America</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- STORY + CONVENER SIDEBAR -->
 <section class="sec sec--grey" id="story">
   <div class="wrap story-grid">
@@ -266,73 +292,113 @@
   </div>
 </section>
 
-<!-- CONVENER -->
-<section class="sec" id="convener">
-  <div class="wrap">
-    <div class="conv rv">
-      <div class="conv-l">
-        <h2>The Convener's welcome</h2>
-        <blockquote>
-          &ldquo;We are not just a network; we are a company of visionary and purposeful agents of change. This is a community that provides a safe place for fellowship, connection &amp; encouragement.&rdquo;
-          <cite>Pastor Dele Bamgboye, Convener</cite>
-        </blockquote>
-        <a class="btn" href="onboarding.html">Join the network <svg class="ico"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="conv-r">
-        <img src="images/convener-cutout.png" alt="Pastor Dele Bamgboye, Convener of New Frontiers" loading="lazy" />
-      </div>
+<!-- EVENTS CATALOGUE -->
+<section class="sec" id="events">
+  <div class="wrap cat-grid">
+    <div class="cat-intro rv">
+      <h2>The New Frontier Calendar</h2>
+      <p>Three rhythms that keep the network growing together: personal, monthly and global.</p>
+      <a class="pill" href="onboarding.html">Join to take part <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="cat-cards rv-stagger">
+      <article class="cat-card cat-card--link">
+        <figure><img src="images/event-scale-session.jpg" alt="Scale Session artwork" loading="lazy" /></figure>
+        <h3>Scale Session</h3><p>Direct mentorship with the Convener</p>
+        <a class="btn cat-btn" href="event-scale-session.html">View event <svg class="ico"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="cat-card cat-card--link">
+        <figure><img src="images/event-online-classroom.jpg" alt="Online Classroom artwork" loading="lazy" /></figure>
+        <h3>Online Classroom</h3><p>Monthly online course session</p>
+        <a class="btn cat-btn" href="event-online-classroom.html">View event <svg class="ico"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="cat-card cat-card--link">
+        <figure><img src="images/event-quarterly-summit.jpg" alt="The Quarterly Summit artwork" loading="lazy" /></figure>
+        <h3>The Quarterly Summit</h3><p>A global gathering of ministers</p>
+        <a class="btn cat-btn" href="event-quarterly-summit.html">View event <svg class="ico"><use href="#i-arrow"/></svg></a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- NETWORK / GLOBE -->
-<section class="sec" id="network">
-  <div class="wrap">
-    <div class="net rv">
-      <div class="sec-head">
-        <h2>One network, many nations</h2>
-        <p>From a single burden in Nigeria to ministers across the nations — drag the globe to turn the world.</p>
-      </div>
-      <div class="net-grid">
-        <div class="globe-box" id="globe" role="img" aria-label="Interactive globe showing the network reaching the nations from Nigeria">
-          <div class="globe-fallback"></div>
-        </div>
-        <div class="rhythms rv-stagger">
-          <div class="rhythm"><span class="idx">01</span><div><h3>Scale Session</h3><p>Direct mentorship sessions with the Convener.</p></div></div>
-          <div class="rhythm"><span class="idx">02</span><div><h3>Online Classroom</h3><p>Our monthly online course session.</p></div></div>
-          <div class="rhythm"><span class="idx">03</span><div><h3>The Quarterly Summit</h3><p>A global gathering of ministers.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- RESOURCES -->
-<section class="sec" id="resources">
+<section class="sec sec--grey" id="resources">
   <div class="wrap">
     <div class="sec-center rv">
-      <h2>Resources &amp; the Exploits Lab</h2>
-      <p>What members get access to once they are inducted into the network.</p>
+      <h2>Resources and Exploits Lab</h2>
+      <p>Tools for the spirit, the mind and the digital age, opened to members once they are inducted into the network.</p>
     </div>
-    <div class="num-grid">
-      <div class="num"><div class="idx">01</div><h3>Mentorship Archive</h3><p>Access exclusive audio and video sessions from Pastor Dele Bamgboye.</p></div>
-      <div class="num"><div class="idx">02</div><h3>Minister's Handbook</h3><p>Downloadable guides on church administration and ethics.</p></div>
-      <div class="num"><div class="idx">03</div><h3>The Tech Hub</h3><p>Bridging the gap between the pulpit and the digital age (connected to HTECB).</p></div>
+    <div class="lab-grid rv-stagger">
+      <article class="lab-card lab-card--archive lab-card--link">
+        <div class="lab-art">
+          <svg class="lab-svg" viewBox="0 0 320 180" aria-hidden="true">
+            <g class="wave"><rect x="18" y="81.0" width="5" height="18" rx="2.5"/><rect x="29" y="73.0" width="5" height="34" rx="2.5"/><rect x="40" y="64.0" width="5" height="52" rx="2.5"/><rect x="51" y="76.0" width="5" height="28" rx="2.5"/><rect x="62" y="58.0" width="5" height="64" rx="2.5"/><rect x="73" y="69.0" width="5" height="42" rx="2.5"/><rect x="84" y="47.0" width="5" height="86" rx="2.5"/><rect x="95" y="61.0" width="5" height="58" rx="2.5"/><rect x="106" y="75.0" width="5" height="30" rx="2.5"/><rect x="117" y="54.0" width="5" height="72" rx="2.5"/><rect x="128" y="42.0" width="5" height="96" rx="2.5"/><rect x="139" y="60.0" width="5" height="60" rx="2.5"/><rect x="150" y="70.0" width="5" height="40" rx="2.5"/><rect x="161" y="50.0" width="5" height="80" rx="2.5"/><rect x="172" y="64.0" width="5" height="52" rx="2.5"/><rect x="183" y="77.0" width="5" height="26" rx="2.5"/><rect x="194" y="59.0" width="5" height="62" rx="2.5"/><rect x="205" y="68.0" width="5" height="44" rx="2.5"/><rect x="216" y="79.0" width="5" height="22" rx="2.5"/><rect x="227" y="72.0" width="5" height="36" rx="2.5"/><rect x="238" y="63.0" width="5" height="54" rx="2.5"/><rect x="249" y="75.0" width="5" height="30" rx="2.5"/><rect x="260" y="82.0" width="5" height="16" rx="2.5"/><rect x="271" y="78.0" width="5" height="24" rx="2.5"/><rect x="282" y="84.0" width="5" height="12" rx="2.5"/><rect x="293" y="80.0" width="5" height="20" rx="2.5"/><rect x="304" y="85.0" width="5" height="10" rx="2.5"/></g>
+            <circle class="play-ring" cx="160" cy="90" r="38"/><circle class="play" cx="160" cy="90" r="28"/><path class="play-tri" d="M152 76v28l22-14z"/>
+          </svg>
+          <span class="lab-chip"><svg class="ico"><use href="#i-play"/></svg>Audio and video</span>
+        </div>
+        <div class="lab-body">
+          <h3>Mentorship Archive</h3>
+          <p>Exclusive audio and video sessions from Pastor Dele Bamgboye, ready whenever you need a word for the season.</p>
+          <a class="btn" href="archive.html" data-lab="archive">Open the archive <svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="lab-card lab-card--books lab-card--link">
+        <div class="lab-art">
+          <svg class="lab-svg" viewBox="0 0 320 180" aria-hidden="true">
+            <rect class="bk bk1" x="92" y="40" width="30" height="120" rx="4"/><rect class="bk bk2" x="126" y="28" width="38" height="132" rx="4"/>
+            <rect class="bk bk3" x="168" y="52" width="26" height="108" rx="4"/>
+            <g transform="rotate(14 214 160)"><rect class="bk bk4" x="198" y="44" width="32" height="116" rx="4"/></g>
+            <path class="bk-line" d="M132 52h26M132 60h26M98 64h18M172 76h16"/><rect class="shelf" x="70" y="160" width="190" height="6" rx="3"/>
+          </svg>
+          <span class="lab-chip"><svg class="ico"><use href="#i-book"/></svg>Downloadable</span>
+        </div>
+        <div class="lab-body">
+          <h3>E-Books</h3>
+          <p>Downloadable guides on church administration and ministerial ethics to read, keep and share with your team.</p>
+          <a class="btn" href="ebooks.html" data-lab="ebooks">Browse the e-books <svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="lab-card lab-card--tech">
+        <div class="lab-art">
+          <svg class="lab-svg" viewBox="0 0 320 180" aria-hidden="true">
+            <path class="trace" d="M20 50h60l20 20h40M20 130h50l24-24h46M300 46h-56l-20 24h-44M300 134h-60l-18-22h-42"/>
+            <circle class="node" cx="20" cy="50" r="4"/><circle class="node" cx="20" cy="130" r="4"/><circle class="node" cx="300" cy="46" r="4"/><circle class="node" cx="300" cy="134" r="4"/>
+            <rect class="chip" x="130" y="54" width="60" height="72" rx="10"/><rect class="chip-in" x="143" y="67" width="34" height="46" rx="5"/>
+            <path class="cross" d="M160 76v28M150 86h20"/>
+          </svg>
+          <span class="lab-chip"><svg class="ico"><use href="#i-screen"/></svg>Connected to HTECB</span>
+        </div>
+        <div class="lab-body">
+          <h3>The Tech Hub</h3>
+          <p>Bridging the gap between the pulpit and the digital age, with the tools and skills to carry your message further.</p>
+          <a class="btn" href="https://wa.me/2348028295917?text=Hello%20New%20Frontiers%2C%20I%27d%20like%20to%20find%20out%20more%20about%20The%20Tech%20Hub." target="_blank" rel="noopener" data-lab="techhub">Enter the Tech Hub <svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="sec sec--grey" id="reach">
+<section class="sec" id="reach">
   <div class="wrap">
-    <div class="sec-center rv">
-      <h2>Let's stay connected</h2>
-      <p>Reach out with any question about the network — the team confirms dates, venues and access details directly.</p>
-    </div>
-    <div class="contact-row rv-stagger">
-      <div><span class="how-ico"><svg class="ico"><use href="#i-mail"/></svg></span><b>Email address</b><a href="mailto:info@newfrontiersglobal.online">info@newfrontiersglobal.online</a></div>
-      <div><span class="how-ico"><svg class="ico"><use href="#i-phone"/></svg></span><b>Phone &amp; WhatsApp</b><a href="tel:+2348028295917">+234 (0) 802 829 5917</a></div>
-      <div><span class="how-ico"><svg class="ico"><use href="#i-doc"/></svg></span><b>Apply online</b><a href="onboarding.html">Onboarding form</a></div>
+    <div class="connect rv">
+      <div class="connect-photo" aria-hidden="true"><img src="images/connect-congregation.jpg" alt="" loading="lazy" /></div>
+      <div class="connect-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="connect-l">
+        <h2>Let's stay connected</h2>
+        <p>A question about the network, an upcoming gathering or your application? Reach the team directly. They confirm dates, venues and access details personally.</p>
+        <div class="connect-acts">
+          <a class="btn btn--light" href="https://wa.me/2348028295917?text=Hello%20New%20Frontiers%2C%20I%27d%20like%20to%20connect%20with%20the%20team." target="_blank" rel="noopener"><svg class="ico ico--lead"><use href="#i-chat"/></svg>Chat on WhatsApp</a>
+          <a class="btn btn--outline" href="onboarding.html">Start your application <svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <ul class="connect-list rv-stagger">
+        <li><a href="mailto:info@newfrontiersglobal.online"><span class="ci"><svg class="ico"><use href="#i-mail"/></svg></span><span class="ct"><small>Email us</small><b>info@newfrontiersglobal.online</b></span><svg class="ico ca"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="tel:+2348028295917"><span class="ci"><svg class="ico"><use href="#i-phone"/></svg></span><span class="ct"><small>Call us</small><b>+234 (0) 802 829 5917</b></span><svg class="ico ca"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="https://wa.me/2348028295917" target="_blank" rel="noopener"><span class="ci"><svg class="ico"><use href="#i-chat"/></svg></span><span class="ct"><small>WhatsApp</small><b>Message the team</b></span><svg class="ico ca"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="onboarding.html"><span class="ci"><svg class="ico"><use href="#i-doc"/></svg></span><span class="ct"><small>Apply online</small><b>Onboarding form, about 10 minutes</b></span><svg class="ico ca"><use href="#i-arrow"/></svg></a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -357,9 +423,9 @@
   </div>
 </footer>
 
-<script src="assets/js/nf.js" defer></script>
+<script src="assets/js/nf-3.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="assets/js/globe.js" defer></script>
+<script src="assets/js/globe-2.js" defer></script>
 <script src="assets/js/chat.js" defer></script>
 </body>
 </html>
